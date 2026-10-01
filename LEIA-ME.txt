@@ -1,0 +1,67 @@
+modRTToggle v1.0 - Ray Tracing, Path Tracing e Frame Gen em tempo real
+=======================================================================
+
+Troca Ray Tracing, Path Tracing e Frame Generation durante o jogo, com uma
+tecla, sem abrir o menu de opções. Uma notificação na tela mostra o modo atual.
+
+TECLAS
+------
+F8 - percorre os modos de Ray Tracing, nesta ordem:
+       1. Ray Tracing e Path Tracing OFF
+       2. Ray Tracing ON, Path Tracing OFF
+       3. Ray Tracing e Path Tracing ON
+       (e volta para o 1)
+
+F9 - liga/desliga o Frame Gen ("Frame Gen ON" / "Frame Gen OFF").
+       Desliga o Frame Gen que estiver ativo (DLSS, FSR ou XeSS) e, ao ligar
+       de novo, volta para esse mesmo. Se nenhum estiver ativo, usa o que
+       combina com o upscaler escolhido no menu (DLSS -> DLSS FG, FSR -> FSR FG,
+       XeSS -> XeSS FG).
+
+As mudanças ficam salvas, como se tivessem sido feitas pelo menu.
+
+REQUISITOS
+----------
+- The Witcher 3 versão Next-Gen / remaster (4.04 ou mais nova), em DirectX 12.
+- Para Ray/Path Tracing: placa com suporte a RT.
+- O mod não altera nenhum arquivo do jogo e não precisa do Script Merger.
+
+INSTALAÇÃO
+----------
+1. Feche o jogo.
+2. Copie a pasta "mods" deste pacote para a pasta de instalação do jogo, por exemplo:
+     C:\Program Files (x86)\Steam\steamapps\common\The Witcher 3\
+   Vai ficar assim:
+     The Witcher 3\mods\modRTToggle\content\scripts\local\modRTToggle.ws
+3. Dê dois cliques em "instalar-teclas.bat" para adicionar F8 e F9.
+   (Ele faz backup do seu input.settings antes de mudar qualquer coisa.)
+4. Abra o jogo. Na primeira vez, os scripts são recompilados.
+
+INSTALAÇÃO MANUAL DAS TECLAS (alternativa ao passo 3)
+-----------------------------------------------------
+Com o jogo FECHADO, abra:
+   Documentos\The Witcher 3\input.settings
+e adicione estas duas linhas logo abaixo de cada um destes cabeçalhos:
+[Exploration], [Exploration_Replacer_Ciri], [Combat], [Combat_Replacer_Ciri],
+[Horse], [Horse_Replacer_Ciri], [Boat], [BoatPassenger], [Swimming], [Diving],
+[Scene], [ScriptedAction], [BASE_PanelsShortcuts]
+
+   IK_F8=(Action=ModCycleRT)
+   IK_F9=(Action=ModToggleFG)
+
+Para usar outras teclas, troque IK_F8 / IK_F9 (ex.: IK_F7, IK_Insert).
+
+IMPORTANTE: só edite o input.settings com o jogo fechado. Se o jogo estiver
+aberto, ele regrava o arquivo ao sair e as teclas somem.
+
+DESINSTALAÇÃO
+-------------
+1. Apague a pasta The Witcher 3\mods\modRTToggle.
+2. Dê dois cliques em "remover-teclas.bat" (ou apague as linhas acima à mão).
+
+OBSERVAÇÕES
+-----------
+- Path Tracing em placas AMD/Intel depende do suporte do próprio jogo.
+- DLSS Ray Reconstruction (só NVIDIA) é reativado automaticamente ao ligar
+  RT/PT, se o DLSS estiver em uso, como o menu do jogo faz.
+- Se F8/F9 já tinham outra função, o instalador avisa.
